@@ -77,25 +77,25 @@ class PowerRoute extends CakeRoute {
  * @return mixed Either a string url for the parameters if they match or false.
  */
 	public function match($url) {
-		// Looking for a route with routeName
-		if (!empty($url['routeName'])) {
-			// $this Route has no routeName and we are looking for one -> no match
-			if (empty($this->options['routeName'])) {
+		// Looking for a route with _name
+		if (!empty($url['_name'])) {
+			// $this Route has no _name and we are looking for one -> no match
+			if (empty($this->options['_name'])) {
 				return false;
 			}
 
-			// $this Route has a different routeName than the one we are looking for -> no match
-			if ($url['routeName'] !== $this->options['routeName']) {
+			// $this Route has a different _name than the one we are looking for -> no match
+			if ($url['_name'] !== $this->options['_name']) {
 				return false;
 			}
 
-			// Having reached here, the routeName matches, so we overwrite $url values
+			// Having reached here, the _name matches, so we overwrite $url values
 			// with the ones from the matched route ($this). This way we ensure it
 			// finally matches when we pass it to parent::match()
 			foreach ($this->defaults as $key => $value) {
 				$url[$key] = $value;
 			}
-			unset($url['routeName']);
+			unset($url['_name']);
 		}
 
 		return parent::match($url);
