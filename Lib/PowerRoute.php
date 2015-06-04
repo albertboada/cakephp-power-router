@@ -77,15 +77,15 @@ class PowerRoute extends CakeRoute {
  * @return mixed Either a string url for the parameters if they match or false.
  */
 	public function match($url) {
-		if (!empty($url['routeName']) && !empty($this->options['routeName'])) {
-			if ($url['routeName'] !== $this->options['routeName']) {
+		if (!empty($url['_name']) && !empty($this->options['_name'])) {
+			if ($url['_name'] !== $this->options['_name']) {
 				return false;
 			} else {
 				foreach ($this->defaults as $key => $value) {
 					$url[$key] = $value;
 				}
 
-				unset($url['routeName']);
+				unset($url['_name']);
 			}
 		}
 

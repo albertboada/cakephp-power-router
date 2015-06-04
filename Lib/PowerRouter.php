@@ -35,7 +35,7 @@ class PowerRouter {
 		$extra = array('routeClass' => 'PowerRoute');
 
 		if (!empty($name)) {
-			$extra['routeName'] = $name;
+			$extra['_name'] = $name;
 		}
 
 		return Router::connect($route, $defaults, array_merge($extra, $options));
